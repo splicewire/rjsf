@@ -1,4 +1,4 @@
-import type { FormIntent, FormIntentHandler } from '@stephenr85/rjsf-registry';
+import type { FormIntent, FormIntentHandler } from '@rushing/rjsf-registry';
 
 /**
  * The Splicewire intent vocabulary over the generic FormIntentBus. The bus

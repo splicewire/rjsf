@@ -13,6 +13,6 @@ export default defineConfig({
         '@rjsf/shadcn',
         '@rjsf/utils',
         '@rjsf/validator-ajv8',
-        '@stephenr85/rjsf-registry',
+        '@rushing/rjsf-registry',
     ],
 });

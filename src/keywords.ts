@@ -1,4 +1,4 @@
-import { createKeywordVocabulary } from '@stephenr85/rjsf-registry';
+import { createKeywordVocabulary } from '@rushing/rjsf-registry';
 
 /**
  * The Splicewire `x-*` vendor-keyword grammar (see the app repo's

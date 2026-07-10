@@ -3,7 +3,7 @@ import {
     SchemaForm,
     createFormValidator,
     type SchemaFormProps,
-} from '@stephenr85/rjsf-registry';
+} from '@rushing/rjsf-registry';
 
 /**
  * The Splicewire schema-form: the base SchemaForm pre-wired with the
