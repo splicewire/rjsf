@@ -4,27 +4,37 @@
     "description": "The Splicewire adapter over rjsf-registry: the vendored x-* generation-vocabulary meta-schema (sync-grammar pattern), the Splicewire keyword dialect configured onto the shell, and the pre-wired SplicewireForm.",
     "license": "MIT",
     "type": "module",
-    "main": "src/index.ts",
-    "types": "src/index.ts",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
     "exports": {
-        ".": "./src/index.ts"
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js"
+        }
     },
     "files": [
+        "dist",
         "src",
         "grammar",
         "README.md"
     ],
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com"
+    },
     "repository": {
         "type": "git",
         "url": "https://github.com/stephenr85/rjsf-splicewire.git"
     },
     "scripts": {
+        "build": "tsup",
+        "dev": "tsup --watch",
         "test": "vitest run",
         "typecheck": "tsc --noEmit",
-        "sync-grammar": "node scripts/sync-grammar.mjs"
+        "sync-grammar": "node scripts/sync-grammar.mjs",
+        "prepublishOnly": "npm run build"
     },
     "dependencies": {
-        "@stephenr85/rjsf-registry": "file:../rjsf-registry"
+        "@stephenr85/rjsf-registry": "^0.1.0"
     },
     "peerDependencies": {
         "@rjsf/core": "^6.0.0",
@@ -44,6 +54,7 @@
         "jsdom": "^26.0.0",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
+        "tsup": "^8.5.1",
         "typescript": "^5.7.0",
         "vitest": "^3.0.0"
     }

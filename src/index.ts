@@ -1,4 +1,5 @@
 // Splicewire vocabulary + pre-wired form.
+export { baseNodeManifest } from './base-manifest';
 export {
     ANNOTATION_KEYWORDS,
     ENGINE_PRIVATE_PATTERN,

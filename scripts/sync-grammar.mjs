@@ -19,25 +19,41 @@ import { homedir } from 'node:os';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const appDir = process.env.SPLICEWIRE_APP_DIR ?? join(homedir(), 'Herd', 'splicewire-app');
-const canonical = resolve(
-    appDir,
-    'resources/composition-grammars/_vocabulary/vocabulary.schema.json',
-);
-const vendored = resolve(here, '../grammar/vocabulary.schema.json');
+const blockSchemaDir =
+    process.env.BLOCK_SCHEMA_DIR ??
+    join(homedir(), 'Workspaces', 'laravel', 'packages', 'rushing', 'laravel-block-schema');
 
-if (!existsSync(canonical)) {
-    console.log(
-        `[sync-grammar] Canonical export not found at ${canonical}\n` +
-            '[sync-grammar] Standalone checkout — keeping the committed vendored copy. No changes made.',
-    );
-    process.exit(0);
+const mirrors = [
+    {
+        label: 'generation vocabulary',
+        canonical: resolve(
+            appDir,
+            'resources/composition-grammars/_vocabulary/vocabulary.schema.json',
+        ),
+        vendored: resolve(here, '../grammar/vocabulary.schema.json'),
+    },
+    {
+        label: 'base node manifest',
+        canonical: resolve(blockSchemaDir, 'resources/manifests/base.manifest.json'),
+        vendored: resolve(here, '../grammar/base.manifest.json'),
+    },
+];
+
+for (const { label, canonical, vendored } of mirrors) {
+    if (!existsSync(canonical)) {
+        console.log(
+            `[sync-grammar] Canonical ${label} not found at ${canonical}\n` +
+                '[sync-grammar] Standalone checkout — keeping the committed vendored copy. No changes made.',
+        );
+        continue;
+    }
+
+    if (existsSync(vendored) && readFileSync(canonical).equals(readFileSync(vendored))) {
+        console.log(`[sync-grammar] Vendored ${label} already up to date.`);
+        continue;
+    }
+
+    mkdirSync(dirname(vendored), { recursive: true });
+    copyFileSync(canonical, vendored);
+    console.log(`[sync-grammar] Vendored ${label} refreshed from ${canonical}`);
 }
-
-if (existsSync(vendored) && readFileSync(canonical).equals(readFileSync(vendored))) {
-    console.log('[sync-grammar] Vendored vocabulary already up to date.');
-    process.exit(0);
-}
-
-mkdirSync(dirname(vendored), { recursive: true });
-copyFileSync(canonical, vendored);
-console.log(`[sync-grammar] Vendored vocabulary refreshed from ${canonical}`);

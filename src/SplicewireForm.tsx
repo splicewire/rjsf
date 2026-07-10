@@ -1,3 +1,4 @@
+import type { ValidatorType } from '@rjsf/utils';
 import {
     SchemaForm,
     createFormValidator,
@@ -11,11 +12,11 @@ import {
  * rjsf-registry's SchemaForm directly.
  */
 
-export function createSplicewireValidator() {
+export function createSplicewireValidator(): ValidatorType {
     return createFormValidator();
 }
 
-export const splicewireValidator = createSplicewireValidator();
+export const splicewireValidator: ValidatorType = createSplicewireValidator();
 
 export interface SplicewireFormProps extends SchemaFormProps {}
 
