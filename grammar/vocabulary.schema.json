@@ -1,0 +1,85 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "GenerationGrammarKeywords",
+    "description": "The composition generation-grammar keyword vocabulary — the x-swc-* dialect a Composition Profile grammar carries. Each property is a keyword; a property schema may carry any subset of these.",
+    "type": "object",
+    "properties": {
+        "x-dereference": {
+            "description": "Base-owned, unprefixed dispatch handle (like $ref): names the Dereferencer that resolves this node. Shared across engines; canonical home is the laravel-json-reference leaf.",
+            "type": "string"
+        },
+        "x-swc-beat": {
+            "description": "How the interpreter treats the beat at the frontier: expandable → one focused expansion call realizes its children; writable → the model writes the leaf directly.",
+            "type": "string",
+            "enum": [
+                "expandable",
+                "writable"
+            ]
+        },
+        "x-swc-cache": {
+            "description": "A caching policy for the beat generate/ground capability: `scope` (invocation → TTL-keyed; snapshot → frozen), optional `ttl`, and an optional grounding-key subset.",
+            "type": "object",
+            "properties": {
+                "scope": {
+                    "type": "string"
+                },
+                "ttl": {
+                    "type": "integer"
+                },
+                "key": {
+                    "type": "array"
+                }
+            },
+            "required": [
+                "scope"
+            ]
+        },
+        "x-swc-generate": {
+            "description": "Generate this property when its beat is expanded: a handler name selects a registered generate capability, or `true` uses the profile default.",
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "boolean"
+                }
+            ]
+        },
+        "x-swc-ground": {
+            "description": "Fill this property from the Composition grounding snapshot: a source name selects a registered ground capability, or `true` uses the property name as the source.",
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "boolean"
+                }
+            ]
+        },
+        "x-swc-max-depth": {
+            "description": "Caps the recursion depth of grammar expansion at this subtree root; the interpreter clamps the effective depth to the engine cap and demotes an expandable beat at the ceiling. Read-side only — no attribute emits it.",
+            "type": "integer"
+        },
+        "x-swc-pause": {
+            "description": "Marks the beat a pause checkpoint (HITL): the interpreter yields its cell for review and does not expand its children until approved.",
+            "type": "boolean"
+        },
+        "x-swc-polish": {
+            "description": "Whether the beat is eligible for auto-polish; `false` fences its cells out of the whole-composition polish orchestrator.",
+            "type": "boolean"
+        },
+        "x-swc-prose": {
+            "description": "The prose disposition of a grounding field — how its facts may be discussed in body prose (subject → write freely; render-only → do not name; nameable → may be named).",
+            "type": "string",
+            "enum": [
+                "subject",
+                "render-only",
+                "nameable"
+            ]
+        },
+        "x-swc-prose-note": {
+            "description": "An optional field-level prose instruction that accompanies the prose disposition.",
+            "type": "string"
+        }
+    }
+}
