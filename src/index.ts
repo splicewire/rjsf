@@ -14,12 +14,21 @@ export {
     splicewireValidator,
     type SplicewireFormProps,
 } from './SplicewireForm';
+export {
+    SW_ENRICH,
+    SW_REVISE,
+    createSplicewireIntentRouter,
+    type SplicewireIntentHandlers,
+    type SwRevisePayload,
+    type SwReviseTarget,
+} from './intents';
 
 // Re-export the generic seam so consumers of the pre-wired form don't need a
 // second import for registry/fetcher plumbing.
 export {
     WidgetRegistryContext,
     buildUiSchema,
+    createFormIntentBus,
     createWidgetRegistry,
     defaultRegistry,
     mergeUiSchema,
@@ -29,6 +38,9 @@ export {
     resolveWidget,
 } from '@stephenr85/rjsf-registry';
 export type {
+    FormIntent,
+    FormIntentBus,
+    FormIntentHandler,
     RegistryEntry,
     SchemaFetcher,
     SchemaNode,
