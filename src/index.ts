@@ -3,6 +3,7 @@ export { baseNodeManifest } from './base-manifest';
 export {
     ANNOTATION_KEYWORDS,
     ENGINE_PRIVATE_PATTERN,
+    SHELL_BINDING_PATTERN,
     FORM_KEYWORDS,
     isEnginePrivateKeyword,
     isSplicewireKeyword,

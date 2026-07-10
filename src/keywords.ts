@@ -31,10 +31,16 @@ export const ANNOTATION_KEYWORDS = [
  */
 export const ENGINE_PRIVATE_PATTERN = /^x-sw[a-z]-/;
 
+/**
+ * Shell-level binding keys (`x-sw-node`, `x-sw-span`, …): the platform-owned
+ * `x-sw-*` prefix extending the base `@id` addressing doctrine.
+ */
+export const SHELL_BINDING_PATTERN = /^x-sw-/;
+
 /** The Splicewire dialect, declared through the generic vocabulary seam. */
 export const splicewireVocabulary = createKeywordVocabulary({
     keywords: ANNOTATION_KEYWORDS,
-    patterns: [ENGINE_PRIVATE_PATTERN],
+    patterns: [ENGINE_PRIVATE_PATTERN, SHELL_BINDING_PATTERN],
 });
 
 export function isEnginePrivateKeyword(keyword: string): boolean {

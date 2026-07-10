@@ -11,6 +11,11 @@ describe('keyword grammar', () => {
         expect(isEnginePrivateKeyword('x-filter')).toBe(false);
     });
 
+    it('tolerates the shell binding keys (x-sw-node / x-sw-span)', () => {
+        expect(isSplicewireKeyword('x-sw-node')).toBe(true);
+        expect(isSplicewireKeyword('x-sw-span')).toBe(true);
+    });
+
     it('recognizes the form-facing and annotation vocabulary', () => {
         for (const kw of ['x-widget', 'x-placeholder', 'x-fragment', 'x-filter', 'x-dereference']) {
             expect(isSplicewireKeyword(kw)).toBe(true);

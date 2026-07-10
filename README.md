@@ -36,3 +36,12 @@ import { SplicewireForm, registerWidget } from '@stephenr85/rjsf-splicewire';
     onSubmit={({ formData }) => save(formData)}
 />;
 ```
+
+## Binding addressing (shell convention)
+
+Span/node-level bindings address into rich-content documents as
+`{ "@id": <field pointer>, "x-sw-node": <uuid>, "x-sw-span": <uuid>? }` — the base `@id`
+doctrine extended with Splicewire-owned `x-sw-*` keys. The SQL graph is authoritative;
+document attrs (node `id`s, `annotation` mark ids) are only the location index the editor
+maintains (blockdoc's node-id and annotation-integrity plugins). Server-side reconciliation
+flags dangling bindings at commit.
