@@ -73,6 +73,22 @@ describe('CitationWidget', () => {
 
         expect(container.querySelectorAll('.sw-citation')).toHaveLength(2);
     });
+
+    it('de-duplicates a token cited more than once (no duplicate React keys)', () => {
+        const { container } = render(
+            <CitationWidget formData={['fact:soul-7', 'fact:soul-7', 'fact:path-3']} />,
+        );
+
+        const chips = container.querySelectorAll('.sw-citation');
+        expect(chips).toHaveLength(2);
+        expect(container.querySelector('.sw-citations')?.getAttribute('data-citations')).toBe('2');
+    });
+
+    it('trims surrounding whitespace from tokens', () => {
+        const { container } = render(<CitationWidget value="  fragment:0191-abc  " />);
+
+        expect(container.querySelector('.sw-citation')?.getAttribute('data-token')).toBe('fragment:0191-abc');
+    });
 });
 
 describe('registerCitationWidget', () => {

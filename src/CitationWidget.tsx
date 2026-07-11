@@ -41,13 +41,26 @@ interface CitationWidgetProps {
 
 /** Normalize a citation field value (a single token or an array of tokens) to a clean token list. */
 function toTokens(value: unknown): string[] {
-    if (typeof value === 'string') {
-        return value.trim() === '' ? [] : [value];
+    const raw =
+        typeof value === 'string'
+            ? [value]
+            : Array.isArray(value)
+              ? value.filter((token): token is string => typeof token === 'string')
+              : [];
+
+    // Trim, drop blanks, and de-duplicate: a cell can legitimately cite the same token twice, but the
+    // rendered chip list keys on the token, so duplicates must collapse (no duplicate React keys).
+    const seen = new Set<string>();
+    const tokens: string[] = [];
+    for (const token of raw) {
+        const trimmed = token.trim();
+        if (trimmed !== '' && ! seen.has(trimmed)) {
+            seen.add(trimmed);
+            tokens.push(trimmed);
+        }
     }
-    if (Array.isArray(value)) {
-        return value.filter((token): token is string => typeof token === 'string' && token.trim() !== '');
-    }
-    return [];
+
+    return tokens;
 }
 
 export function CitationWidget(props: CitationWidgetProps) {
