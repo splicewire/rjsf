@@ -35,7 +35,7 @@
         "prepublishOnly": "npm run build"
     },
     "dependencies": {
-        "@schemastud/rjsf-registry": "file:../../schemastud/rjsf-registry"
+        "@schemastud/rjsf-registry": "^0.1.0"
     },
     "peerDependencies": {
         "@rjsf/core": "^6.0.0",
