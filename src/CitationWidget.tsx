@@ -1,4 +1,4 @@
-import type { WidgetRegistry } from '@rushing/rjsf-registry';
+import type { WidgetRegistry } from '@schemastud/rjsf-registry';
 
 /**
  * The Splicewire citation widget — the rjsf successor to the citation renderer that died with the

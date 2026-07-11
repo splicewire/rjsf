@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { render } from '@testing-library/react';
-import { createWidgetRegistry } from '@rushing/rjsf-registry';
+import { createWidgetRegistry } from '@schemastud/rjsf-registry';
 import { CitationWidget, registerCitationWidget } from '../src';
 
 describe('CitationWidget', () => {

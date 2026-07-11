@@ -43,7 +43,7 @@ export {
     relaxNullableRequired,
     resolveExternalRefs,
     resolveWidget,
-} from '@rushing/rjsf-registry';
+} from '@schemastud/rjsf-registry';
 export type {
     FormIntent,
     FormIntentBus,
@@ -53,4 +53,4 @@ export type {
     SchemaNode,
     WidgetRegistry,
     WidgetResolution,
-} from '@rushing/rjsf-registry';
+} from '@schemastud/rjsf-registry';

@@ -1,5 +1,5 @@
 {
-    "name": "@rushing/rjsf-splicewire",
+    "name": "@splicewire/rjsf",
     "version": "0.1.0",
     "description": "The Splicewire adapter over rjsf-registry: the vendored x-* generation-vocabulary meta-schema (sync-grammar pattern), the Splicewire keyword dialect configured onto the shell, and the pre-wired SplicewireForm.",
     "license": "MIT",
@@ -24,7 +24,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/stephenr85/rjsf-splicewire.git"
+        "url": "https://github.com/splicewire/rjsf.git"
     },
     "scripts": {
         "build": "tsup",
@@ -35,7 +35,7 @@
         "prepublishOnly": "npm run build"
     },
     "dependencies": {
-        "@rushing/rjsf-registry": "file:../rjsf-registry"
+        "@schemastud/rjsf-registry": "file:../../schemastud/rjsf-registry"
     },
     "peerDependencies": {
         "@rjsf/core": "^6.0.0",
