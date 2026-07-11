@@ -23,6 +23,12 @@ export {
     type SwRevisePayload,
     type SwReviseTarget,
 } from './intents';
+export {
+    CitationWidget,
+    registerCitationWidget,
+    type CitationDescriptor,
+    type CitationFormContext,
+} from './CitationWidget';
 
 // Re-export the generic seam so consumers of the pre-wired form don't need a
 // second import for registry/fetcher plumbing.
