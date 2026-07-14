@@ -1,6 +1,6 @@
 # rjsf-splicewire
 
-The Splicewire adapter over [`@schemastud/rjsf-registry`](https://github.com/schemastud/rjsf-registry):
+The Splicewire adapter over [`@schemastud/seam`](https://github.com/schemastud/seam):
 the collective vocabulary plus Splicewire-specific routing. Mirrors the PHP seam between
 `laravel-schema-forms` (host-agnostic primitive) and `laravel-splicewire-satellite-schema-form`
 (Splicewire adapter).
@@ -17,7 +17,7 @@ the collective vocabulary plus Splicewire-specific routing. Mirrors the PHP seam
   The generic registry/fetcher plumbing is re-exported so one import serves most consumers.
 
 Satellites with **no** Splicewire frontend dependency (plain waitlist/contact forms) should use
-`@schemastud/rjsf-registry` directly — that package carries zero Splicewire vocabulary.
+`@schemastud/seam` directly — that package carries zero Splicewire vocabulary.
 
 ## Install
 

@@ -1,4 +1,4 @@
-import type { WidgetRegistry } from '@schemastud/rjsf-registry';
+import type { WidgetRegistry } from '@schemastud/seam';
 
 /**
  * The Splicewire citation widget — the rjsf successor to the citation renderer that died with the
@@ -11,7 +11,7 @@ import type { WidgetRegistry } from '@schemastud/rjsf-registry';
  * It resolves human labels/links through a host-supplied `formContext.resolveCitation` seam — the
  * platform hands the form a token→descriptor map (e.g. the frozen grounding snapshot), so a raw
  * `fragment:0191…` renders as its Fragment name. Absent a resolver it degrades to the raw token,
- * never blank. Mounted by the rjsf-registry walker as a `ui:widget` (string field) or a `ui:field`
+ * never blank. Mounted by the seam walker as a `ui:widget` (string field) or a `ui:field`
  * (array field), so it accepts both signatures and normalizes internally.
  */
 

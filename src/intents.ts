@@ -1,8 +1,8 @@
-import type { FormIntent, FormIntentHandler } from '@schemastud/rjsf-registry';
+import type { FormIntent, FormIntentHandler } from '@schemastud/seam';
 
 /**
  * The Splicewire intent vocabulary over the generic FormIntentBus. The bus
- * (rjsf-registry) stays vocabulary-free; this module owns the `sw:*` names
+ * (seam) stays vocabulary-free; this module owns the `sw:*` names
  * and the router that fans a bus subscription out to typed handlers. Non-sw
  * intents pass through untouched — other vocabularies can share the bus.
  */

@@ -3,13 +3,13 @@ import {
     SchemaForm,
     createFormValidator,
     type SchemaFormProps,
-} from '@schemastud/rjsf-registry';
+} from '@schemastud/seam';
 
 /**
  * The Splicewire schema-form: the base SchemaForm pre-wired with the
  * Splicewire validator (tolerant of the full x-* grammar). Satellites and the
  * platform SPA consume this; hosts with no Splicewire vocabulary use
- * rjsf-registry's SchemaForm directly.
+ * seam's SchemaForm directly.
  */
 
 export function createSplicewireValidator(): ValidatorType {

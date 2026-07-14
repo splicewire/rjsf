@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
-import type { FormIntent } from '@schemastud/rjsf-registry';
-import { createFormIntentBus } from '@schemastud/rjsf-registry';
+import type { FormIntent } from '@schemastud/seam';
+import { createFormIntentBus } from '@schemastud/seam';
 import { SW_ENRICH, SW_REVISE, createSplicewireIntentRouter } from '../src';
 
 describe('createSplicewireIntentRouter', () => {

@@ -1,4 +1,4 @@
-import { createKeywordVocabulary } from '@schemastud/rjsf-registry';
+import { createKeywordVocabulary } from '@schemastud/seam';
 
 /**
  * The Splicewire `x-*` vendor-keyword grammar (see the app repo's
