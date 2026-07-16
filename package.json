@@ -1,5 +1,5 @@
 {
-    "name": "@splicewire/rjsf",
+    "name": "@splicewire/splice",
     "version": "0.1.0",
     "description": "The Splicewire adapter over seam: the vendored x-* generation-vocabulary meta-schema (sync-grammar pattern), the Splicewire keyword dialect configured onto the shell, and the pre-wired SplicewireForm.",
     "license": "MIT",
@@ -24,7 +24,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/splicewire/rjsf.git"
+        "url": "https://github.com/splicewire/splice.git"
     },
     "scripts": {
         "build": "tsup",

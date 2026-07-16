@@ -1,4 +1,4 @@
-# rjsf-splicewire
+# splice
 
 The Splicewire adapter over [`@schemastud/seam`](https://github.com/schemastud/seam):
 the collective vocabulary plus Splicewire-specific routing. Mirrors the PHP seam between
@@ -22,13 +22,13 @@ Satellites with **no** Splicewire frontend dependency (plain waitlist/contact fo
 ## Install
 
 ```sh
-npm install @splicewire/rjsf
+npm install @splicewire/splice
 ```
 
 ## Usage
 
 ```tsx
-import { SplicewireForm, registerWidget } from '@splicewire/rjsf';
+import { SplicewireForm, registerWidget } from '@splicewire/splice';
 
 <SplicewireForm
     schema={schema}
