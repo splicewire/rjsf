@@ -1,62 +1,73 @@
 {
-    "name": "@splicewire/splice",
-    "version": "0.1.0",
-    "description": "The Splicewire adapter over seam: the vendored x-* generation-vocabulary meta-schema (sync-grammar pattern), the Splicewire keyword dialect configured onto the shell, and the pre-wired SplicewireForm.",
-    "license": "MIT",
-    "type": "module",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
-    "exports": {
-        ".": {
-            "types": "./dist/index.d.ts",
-            "import": "./dist/index.js"
-        }
-    },
-    "files": [
-        "dist",
-        "src",
-        "grammar",
-        "README.md"
-    ],
-    "publishConfig": {
-        "registry": "https://registry.npmjs.org",
-        "access": "public"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/splicewire/splice.git"
-    },
-    "scripts": {
-        "build": "tsup",
-        "dev": "tsup --watch",
-        "test": "vitest run",
-        "typecheck": "tsc --noEmit",
-        "sync-grammar": "node scripts/sync-grammar.mjs",
-        "prepublishOnly": "npm run build"
-    },
-    "dependencies": {
-        "@schemastud/seam": "^0.1.0"
-    },
-    "peerDependencies": {
-        "@rjsf/core": "^6.0.0",
-        "@rjsf/shadcn": "^6.0.0",
-        "@rjsf/utils": "^6.0.0",
-        "@rjsf/validator-ajv8": "^6.0.0",
-        "react": ">=18"
-    },
-    "devDependencies": {
-        "@rjsf/core": "^6.0.0",
-        "@rjsf/shadcn": "^6.0.0",
-        "@rjsf/utils": "^6.0.0",
-        "@rjsf/validator-ajv8": "^6.0.0",
-        "@testing-library/react": "^16.1.0",
-        "@types/node": "^26.1.1",
-        "@types/react": "^19.0.0",
-        "jsdom": "^26.0.0",
-        "react": "^19.0.0",
-        "react-dom": "^19.0.0",
-        "tsup": "^8.5.1",
-        "typescript": "^5.7.0",
-        "vitest": "^3.0.0"
+  "name": "@splicewire/splice",
+  "version": "0.1.0",
+  "description": "The Splicewire adapter over seam: the vendored x-* generation-vocabulary meta-schema (sync-grammar pattern), the Splicewire keyword dialect configured onto the shell, and the pre-wired SplicewireForm.",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
     }
+  },
+  "files": [
+    "dist",
+    "src",
+    "grammar",
+    "README.md"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/splicewire/splice.git"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "sync-grammar": "node scripts/sync-grammar.mjs",
+    "prepublishOnly": "npm run build",
+    "storybook": "storybook dev -p 6008",
+    "build-storybook": "storybook build",
+    "test-storybook": "test-storybook --url http://127.0.0.1:6008",
+    "lint:tokens": "node scripts/lint-tokens.mjs"
+  },
+  "dependencies": {
+    "@schemastud/seam": "^0.1.0"
+  },
+  "peerDependencies": {
+    "@rjsf/core": "^6.0.0",
+    "@rjsf/shadcn": "^6.0.0",
+    "@rjsf/utils": "^6.0.0",
+    "@rjsf/validator-ajv8": "^6.0.0",
+    "react": ">=18"
+  },
+  "devDependencies": {
+    "@rjsf/core": "^6.0.0",
+    "@rjsf/shadcn": "^6.0.0",
+    "@rjsf/utils": "^6.0.0",
+    "@rjsf/validator-ajv8": "^6.0.0",
+    "@storybook/react-vite": "^10.5.4",
+    "@storybook/test-runner": "^0.24.4",
+    "@tailwindcss/vite": "^4.3.3",
+    "@testing-library/react": "^16.1.0",
+    "@types/node": "^26.1.1",
+    "@types/react": "^19.0.0",
+    "jest-image-snapshot": "^6.5.2",
+    "jsdom": "^26.0.0",
+    "playwright": "^1.61.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "storybook": "^10.5.4",
+    "tailwindcss": "^4.3.3",
+    "tsup": "^8.5.1",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
 }
