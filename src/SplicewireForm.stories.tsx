@@ -1,21 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { userEvent, within } from 'storybook/test';
 import { SplicewireForm } from './SplicewireForm';
-import {
-    CITATION_SCHEMA,
-    CITATION_VALUE,
-    FIELD_KINDS_SCHEMA,
-    FIELD_KINDS_VALUE,
-    makeSplicewireRegistry,
-    resolveCitation,
-} from './story-fixtures';
+import { FIELD_KINDS_SCHEMA, FIELD_KINDS_VALUE } from './story-fixtures';
 
 /**
  * Splice/SplicewireForm (component-seams ticket 29). The headline surface of the PAID
  * composed tier: the base seam `SchemaForm` pre-wired with the Splicewire validator
- * (tolerant of the full `x-*` grammar) and the Splicewire dialect's own composed
- * widgets — the `x-widget: citation` grounding-citation chip. It is the composed-tier
- * counterpart to `Seam/SchemaForm`: satellites and the platform SPA consume THIS form;
+ * (tolerant of the full `x-*` grammar). It is the composed-tier counterpart to
+ * `Seam/SchemaForm`: satellites and the platform SPA consume THIS form;
  * hosts with no Splicewire vocabulary use the plain seam directly.
  *
  * It renders standalone off a fixture JSON schema — the exact shape the rushing-prototype
@@ -24,9 +16,11 @@ import {
  *
  * TREATMENT axes (treatment-axes.md): the **states** axis dominates — validation errors
  * are the natural states here (Populated / Empty / Invalid-on-submit / Disabled). The
- * splice-specific delta from the seam is the composed **citation widget resolving through
- * the form** (the `CitationField` story) — the one thing the paid form does that the plain
- * seam does not. Per the rule of sanction, `variant`/`size`/`tone`/`density`/`viewport`
+ * splice-specific delta from the seam is the validator, not a widget: the former
+ * `CitationField` story (the `x-widget: citation` chip resolving through the form) went
+ * with `CitationWidget` in composition-dialect-gaps 13 — no host schema declared the
+ * keyword and no host registry mounted it. Per the rule of sanction,
+ * `variant`/`size`/`tone`/`density`/`viewport`
  * are not exposed by this form ⇒ absent-not-a-gap. Ambient token + light⊗dark are wired
  * globally (splice `.storybook`, `--splice-*` seed + `colorScheme` toolbar); interactive
  * stories `play`-await settled content so a VR baseline captures the resolved form, never
@@ -34,9 +28,7 @@ import {
  *
  * HONEST SKINNING NOTE (mirrors seam ticket 17 / beam ticket 23): the RJSF (shadcn theme)
  * form chrome re-skins under `.dark` via the semantic `--splice-*` seed — that is the real
- * light⊗dark coverage. The citation chips themselves emit hardcoded `sw-citation*`
- * classNames (app-owned CSS, out of the headless package), so their chip styling reads
- * unstyled in isolation by design; re-treating those to tokens is ticket 32 debt.
+ * light⊗dark coverage.
  */
 const meta = {
     title: 'Splice/SplicewireForm',
@@ -111,30 +103,4 @@ export const Disabled: Story = {
         </div>
     ),
     play: awaitField('Name'),
-};
-
-/**
- * The splice-specific composed widget — the `x-widget: citation` field resolving THROUGH
- * the real form. A Splicewire registry (default seam widgets + citation) is passed via the
- * `registry` prop so `buildUiSchema` mounts `CitationWidget` on the `groundingTokens` field,
- * and `formContext.resolveCitation` renders the grounding tokens as human-labelled,
- * linkable citation chips. This is the one story that distinguishes the paid form from the
- * plain seam's `SchemaForm`; the widget's own isolation catalog is `Splice/CitationWidget`.
- */
-export const CitationField: Story = {
-    render: () => (
-        <div style={{ maxWidth: 520 }}>
-            <SplicewireForm
-                schema={CITATION_SCHEMA}
-                formData={CITATION_VALUE}
-                registry={makeSplicewireRegistry()}
-                formContext={{ resolveCitation }}
-            />
-        </div>
-    ),
-    play: async ({ canvasElement }) => {
-        const canvas = within(canvasElement);
-        // Await a resolved citation label so the VR baseline captures the resolved chips.
-        await canvas.findByText('Onboarding brief');
-    },
 };
