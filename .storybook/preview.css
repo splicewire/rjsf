@@ -1,10 +1,12 @@
 @import 'tailwindcss';
 
 /*
- * Scan the whole splice estate (src + colocated stories) for utility classes.
- * node_modules / .gitignore'd paths are auto-excluded by Tailwind v4.
+ * Scan splice source and the built UI dependencies rendered by its stories.
+ * Tailwind excludes node_modules from automatic discovery.
  */
-@source '../';
+@source '../src';
+@source '../node_modules/@schemastud/ui/dist';
+@source '../node_modules/@schemastud/seam/dist';
 
 /*
  * ─────────────────────────────────────────────────────────────────────────────

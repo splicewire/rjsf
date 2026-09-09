@@ -32,8 +32,8 @@ export {
     createWidgetRegistry,
     defaultRegistry,
     mergeUiSchema,
+    normalizeNullableRefs,
     registerWidget,
-    relaxNullableRequired,
     resolveExternalRefs,
     resolveWidget,
 } from '@schemastud/seam';
@@ -47,3 +47,8 @@ export type {
     WidgetRegistry,
     WidgetResolution,
 } from '@schemastud/seam';
+
+export {
+    RefineInstructionDialog,
+    type RefineInstructionDialogProps,
+} from './RefineInstructionDialog';

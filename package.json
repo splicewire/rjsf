@@ -36,17 +36,18 @@
     "storybook": "storybook dev -p 6008",
     "build-storybook": "storybook build",
     "test-storybook": "test-storybook --url http://127.0.0.1:6008",
-    "lint:tokens": "node scripts/lint-tokens.mjs"
+    "lint:tokens": "node scripts/lint-tokens.mjs",
+    "lint:imports": "node scripts/check-imports.mjs"
   },
-  "dependencies": {
-    "@schemastud/seam": "^0.1.0"
-  },
+  "dependencies": {},
   "peerDependencies": {
     "@rjsf/core": "^6.0.0",
     "@rjsf/shadcn": "^6.0.0",
     "@rjsf/utils": "^6.0.0",
     "@rjsf/validator-ajv8": "^6.0.0",
-    "react": ">=18"
+    "react": ">=18",
+    "@schemastud/ui": "*",
+    "@schemastud/seam": "^0.2.1"
   },
   "devDependencies": {
     "@rjsf/core": "^6.0.0",
@@ -68,6 +69,8 @@
     "tailwindcss": "^4.3.3",
     "tsup": "^8.5.1",
     "typescript": "^5.7.0",
-    "vitest": "^3.0.0"
+    "vitest": "^3.0.0",
+    "@schemastud/ui": "file:../../schemastud/ui",
+    "@schemastud/seam": "file:../../schemastud/seam"
   }
 }
