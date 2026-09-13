@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { userEvent, within } from 'storybook/test';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 import { SplicewireForm } from './SplicewireForm';
 import { FIELD_KINDS_SCHEMA, FIELD_KINDS_VALUE } from './story-fixtures';
 
@@ -39,9 +39,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const awaitField =
-    (label: string): Story['play'] =>
+    (label: RegExp): Story['play'] =>
     async ({ canvasElement }) => {
-        await within(canvasElement).findByText(label);
+        await within(canvasElement).findByRole('textbox', { name: label });
     };
 
 /**
@@ -55,7 +55,7 @@ export const FieldKinds: Story = {
             <SplicewireForm schema={FIELD_KINDS_SCHEMA} formData={FIELD_KINDS_VALUE} />
         </div>
     ),
-    play: awaitField('Name'),
+    play: awaitField(/^Name\s*\*?$/),
 };
 
 /** states = empty — the same schema with no formData: every field renders in its blank state. */
@@ -65,19 +65,19 @@ export const Empty: Story = {
             <SplicewireForm schema={FIELD_KINDS_SCHEMA} />
         </div>
     ),
-    play: awaitField('Name'),
+    play: awaitField(/^Name\s*\*?$/),
 };
 
 /**
  * states = error — submit a near-empty form so the Splicewire (AJV) validator surfaces the
- * `required` (name / email) and `minLength(name)` violations inline. `play` clicks Submit
- * and awaits the first error so the VR baseline captures the settled error state, not the
- * pristine form.
+ * `required(email)` and `minLength(name)` violations inline. This fixture disables native
+ * HTML validation so Submit reaches AJV; `play` clicks Submit and awaits both fields'
+ * associated error descriptions before the VR baseline captures the settled error state.
  */
 export const ValidationErrors: Story = {
     render: () => (
         <div style={{ maxWidth: 520 }}>
-            <SplicewireForm schema={FIELD_KINDS_SCHEMA} formData={{ name: 'A' }}>
+            <SplicewireForm schema={FIELD_KINDS_SCHEMA} formData={{ name: 'A' }} noHtml5Validate>
                 <button type="submit" data-testid="submit">
                     Submit
                 </button>
@@ -86,9 +86,13 @@ export const ValidationErrors: Story = {
     ),
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
-        await canvas.findByText('Name');
+        const name = await canvas.findByRole('textbox', { name: /^Name\s*\*?$/ });
+        const email = await canvas.findByRole('textbox', { name: /^Email\s*\*?$/ });
         await userEvent.click(await canvas.findByTestId('submit'));
-        await canvas.findByText(/must NOT have fewer than|is a required property|required/i);
+        await waitFor(() => {
+            expect(name).toHaveAccessibleDescription('must NOT have fewer than 2 characters');
+            expect(email).toHaveAccessibleDescription("must have required property 'Email'");
+        });
     },
 };
 
@@ -102,5 +106,5 @@ export const Disabled: Story = {
             <SplicewireForm schema={FIELD_KINDS_SCHEMA} formData={FIELD_KINDS_VALUE} disabled />
         </div>
     ),
-    play: awaitField('Name'),
+    play: awaitField(/^Name\s*\*?$/),
 };
