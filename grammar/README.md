@@ -16,3 +16,13 @@ Why vendored: the package must be self-contained for satellites that install it
 standalone (no dependency on the app repo's `resources/` tree), and the
 conformance test (`tests/vocabulary-conformance.test.ts`) reads only this copy
 so it runs identically in the monorepo and in a standalone checkout.
+
+## Vendored base node manifest
+
+`base.manifest.json` is the same kind of mirror for the blockdoc base prose
+vocabulary. Source of truth: schemastud/laravel-blockdoc's
+`resources/manifests/base.manifest.json`; `npm run sync-grammar` refreshes it
+too. Its node names must be the ones `@schemastud/blockdoc` normalizes stored
+documents into, or the editor drops every document it opens.
+`tests/base-manifest-load.test.tsx` opens old-name and current-name documents
+through this copy with the real editor and fails on any drift.

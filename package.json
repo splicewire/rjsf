@@ -71,6 +71,7 @@
     "typescript": "^5.7.0",
     "vitest": "^3.0.0",
     "@schemastud/ui": "file:../../schemastud/ui",
-    "@schemastud/seam": "file:../../schemastud/seam"
+    "@schemastud/seam": "file:../../schemastud/seam",
+    "@schemastud/blockdoc": "file:../../schemastud/blockdoc"
   }
 }
