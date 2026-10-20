@@ -1,6 +1,6 @@
 {
   "name": "@splicewire/splice",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The Splicewire adapter over seam: the vendored x-* generation-vocabulary meta-schema (sync-grammar pattern), the Splicewire keyword dialect configured onto the shell, and the pre-wired SplicewireForm.",
   "license": "MIT",
   "type": "module",
