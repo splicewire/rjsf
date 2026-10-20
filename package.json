@@ -1,6 +1,6 @@
 {
   "name": "@splicewire/splice",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "The Splicewire adapter over seam: the vendored x-* generation-vocabulary meta-schema (sync-grammar pattern), the Splicewire keyword dialect configured onto the shell, and the pre-wired SplicewireForm.",
   "license": "MIT",
   "type": "module",
@@ -47,7 +47,7 @@
     "@rjsf/validator-ajv8": "^6.0.0",
     "react": ">=18",
     "@schemastud/ui": "*",
-    "@schemastud/seam": "^0.2.1"
+    "@schemastud/seam": "^0.2.1 || ^0.3.0"
   },
   "devDependencies": {
     "@rjsf/core": "^6.0.0",
