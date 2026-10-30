@@ -18,7 +18,6 @@ export const ANNOTATION_KEYWORDS = [
     'x-filter',
     'x-sort',
     'x-lazy',
-    'x-optional',
     'x-dereference',
     'x-migrate',
     'x-migrate-from',
