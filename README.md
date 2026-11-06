@@ -1,9 +1,9 @@
 # splice
 
 The Splicewire adapter over [`@schemastud/seam`](https://github.com/schemastud/seam):
-the collective vocabulary plus Splicewire-specific routing. Mirrors the PHP seam between
-`laravel-schema-forms` (host-agnostic primitive) and `laravel-splicewire-satellite-schema-form`
-(Splicewire adapter).
+the collective vocabulary plus Splicewire-specific routing. On the PHP side, the same JSON Schema
+is checked and recorded by `splicewire/laravel-beam`'s intake door (`SchemaIntakeValidator` and
+`RecordsSubmissions`).
 
 - **Keyword dialect** — the Splicewire `x-*` grammar (`FORM_KEYWORDS`, `ANNOTATION_KEYWORDS`,
   and the engine-private `x-sw?-*` pattern) declared through the generic
