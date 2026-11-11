@@ -70,8 +70,8 @@
     "tsup": "^8.5.1",
     "typescript": "^5.7.0",
     "vitest": "^3.0.0",
-    "@schemastud/ui": "file:../../schemastud/ui",
-    "@schemastud/seam": "file:../../schemastud/seam",
-    "@schemastud/blockdoc": "file:../../schemastud/blockdoc"
+    "@schemastud/ui": "github:schemastud/js#abef468b39df9b1e81fd9a2081e69f8094c60e4e&path:/ui",
+    "@schemastud/seam": "github:schemastud/js#8ac277bd74a944a96a936c12b7a792e8e647ce22&path:/seam",
+    "@schemastud/blockdoc": "github:schemastud/js#bb9c32b0270bee6c16cb02e0d001fbee911727ad&path:/blockdoc"
   }
 }
