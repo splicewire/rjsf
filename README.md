@@ -13,7 +13,9 @@ is checked and recorded by `splicewire/laravel-beam`'s intake door (`SchemaIntak
   `npm run sync-grammar` (reads `$SPLICEWIRE_APP_DIR`, no-ops in standalone checkouts) and
   commit the refreshed copy alongside the grammar change. The conformance test asserts the
   adapter tolerates every published keyword.
-- **`SplicewireForm`** — the pre-wired form: `SchemaForm` with the Splicewire validator.
+- **`SplicewireForm`** — the pre-wired form over seam's `SchemaForm`. With no `validator` prop it validates through the
+  provider's localized validator (seam's `useFormValidator()`, seam >= 0.5.1), so validation errors follow the active locale;
+  an explicit `validator` prop still wins. `splicewireValidator` remains a plain validator for use outside a render.
   The generic registry/fetcher plumbing is re-exported so one import serves most consumers.
 
 Satellites with **no** Splicewire frontend dependency (plain waitlist/contact forms) should use
